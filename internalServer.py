@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 
 app = Flask(__name__)
 
-MQTT_BROKER = "192.168.29.158"
+MQTT_BROKER = "BridgeServerIP"
 MQTT_PORT = 1883
 
 mqtt_client = mqtt.Client(protocol=mqtt.MQTTv5)
