@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-INTERNAL_SERVER_URL = "https://192.168.29.188:8443/mqtt/publish"
+INTERNAL_SERVER_URL = "https://serverIP:8443/mqtt/publish"
 # Use internal IP or DNS
 
 @app.route('/bridge/publish', methods=['POST'])
