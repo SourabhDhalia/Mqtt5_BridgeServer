@@ -1,0 +1,8 @@
+# .gitignore
+*.pem
+*.key
+.env
+__pycache__/
+venv/
+*.pyc
+.DS_Store
