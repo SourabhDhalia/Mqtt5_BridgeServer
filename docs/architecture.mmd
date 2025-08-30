@@ -1,0 +1,14 @@
+flowchart LR
+  A[Requester Device\n(e.g., Client App)] -->|HTTP POST /publish\nJSON body| B[Bridge Server\nFlask + MQTT v5]
+  B -->|MQTT Publish\nTopic: request| C[MQTT Broker]
+  C -->|Delivers message| D[Target Device\n(e.g., IoT/Service)]
+  D -->|Performs task| D
+  D -->|MQTT Publish\nTopic: response| C
+  C -->|Delivers response| B
+  B -->|HTTP Response\n200/Result payload| A
+
+%% Notes:
+%% - The Bridge Server exposes HTTP and relays to MQTT.
+%% - Target Device subscribes to request topic and publishes response to a reply topic.
+%% - Response path is optional and depends on target implementation.
+

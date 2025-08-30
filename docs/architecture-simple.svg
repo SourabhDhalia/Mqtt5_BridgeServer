@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <style>
+    .stroke { stroke:#111; stroke-width:6; fill:none; stroke-linecap:round; stroke-linejoin:round }
+    .thin   { stroke:#111; stroke-width:3; fill:none; stroke-linecap:round; stroke-linejoin:round }
+    .fill   { fill:#fff; stroke:#111; stroke-width:6; }
+    .title  { font: 700 24px Arial, sans-serif; fill:#111; text-anchor: middle }
+    .label  { font: 700 18px Arial, sans-serif; fill:#111; text-anchor: middle }
+    .small  { font: 500 14px Arial, sans-serif; fill:#111; text-anchor: middle }
+  </style>
+
+  <!-- Requester (laptop) -->
+  <g transform="translate(90,145)">
+    <!-- screen -->
+    <rect x="0" y="0" rx="16" ry="16" width="230" height="150" class="stroke"/>
+    <!-- base -->
+    <path d="M -10 160 L 240 160 L 220 190 L 10 190 Z" class="stroke"/>
+    <!-- camera notch -->
+    <circle cx="115" cy="20" r="2" fill="#111"/>
+    <text class="title" x="115" y="235">REQUESTER</text>
+    <text class="title" x="115" y="265">DEVICE</text>
+  </g>
+
+  <!-- Middleware (server) -->
+  <g transform="translate(485,120)">
+    <rect x="0" y="0" rx="20" ry="20" width="230" height="200" class="stroke"/>
+    <line x1="0" y1="65" x2="230" y2="65" class="thin"/>
+    <line x1="0" y1="120" x2="230" y2="120" class="thin"/>
+    <circle cx="205" cy="35" r="6" fill="#111"/>
+    <circle cx="205" cy="95" r="6" fill="#111"/>
+    <circle cx="205" cy="155" r="6" fill="#111"/>
+    <text class="title" x="115" y="235">MIDDLEWARE</text>
+    <text class="title" x="115" y="265">SERVER</text>
+  </g>
+
+  <!-- Target (monitor) -->
+  <g transform="translate(875,145)">
+    <!-- screen -->
+    <rect x="0" y="0" rx="16" ry="16" width="230" height="150" class="stroke"/>
+    <!-- stand -->
+    <rect x="100" y="150" width="30" height="25" class="stroke"/>
+    <rect x="65" y="175" width="100" height="18" class="stroke"/>
+    <text class="title" x="115" y="235">TARGET</text>
+    <text class="title" x="115" y="265">DEVICE</text>
+  </g>
+
+  <!-- Top arrows: REQUEST -->
+  <g>
+    <line x1="330" y1="220" x2="480" y2="220" class="stroke"/>
+    <polygon points="480,220 460,210 460,230" fill="#111"/>
+    <text class="label" x="405" y="200">REQUEST</text>
+
+    <line x1="715" y1="220" x2="865" y2="220" class="stroke"/>
+    <polygon points="865,220 845,210 845,230" fill="#111"/>
+    <text class="label" x="790" y="200">REQUEST</text>
+  </g>
+
+  <!-- Bottom bracket: RESPONSE (across both devices) -->
+  <g>
+    <!-- left hook -->
+    <path d="M 200 430 q -25 0 -25 -25 v -25" class="stroke"/>
+    <!-- horizontal run -->
+    <line x1="175" y1="405" x2="1025" y2="405" class="stroke"/>
+    <!-- right hook -->
+    <path d="M 1025 405 v 25 q 0 25 -25 25" class="stroke"/>
+    <text class="label" x="450" y="395">RESPONSE</text>
+    <text class="label" x="770" y="395">RESPONSE</text>
+  </g>
+
+  <!-- Caption -->
+  <text class="small" x="600" y="485">
+    Middleware accepts request from requester, forwards to target, and relays the response back.
+  </text>
+</svg>
+

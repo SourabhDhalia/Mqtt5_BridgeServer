@@ -46,6 +46,7 @@ pip install -r requirements.txt
    - Set the `MQTT_BROKER` variable to your MQTT broker address.
    - Set the `MQTT_PORT` variable to the port your MQTT broker is listening on.
    - If authentication is required, set the `MQTT_USERNAME` and `MQTT_PASSWORD`.
+   - Optionally set `HTTP_PORT` (defaults to `5000`).
 
 ## Running the Bridge
 

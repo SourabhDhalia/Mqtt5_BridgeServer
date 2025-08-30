@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 import paho.mqtt.client as mqtt
-import json
 import config
 
 app = Flask(__name__)
@@ -15,8 +14,8 @@ mqtt_client.on_connect = on_connect
 if getattr(config, "MQTT_USERNAME", None) and getattr(config, "MQTT_PASSWORD", None):
     mqtt_client.username_pw_set(config.MQTT_USERNAME, config.MQTT_PASSWORD)
 
+mqtt_client.connect(getattr(config, "MQTT_BROKER", "localhost"), getattr(config, "MQTT_PORT", 1883), 60)
 mqtt_client.loop_start()
-mqtt_client.connect(config.MQTT_BROKER, config.MQTT_PORT, 60)
 
 @app.route('/publish', methods=['POST'])
 def publish():

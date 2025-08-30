@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1000" height="600" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill:#ffffff; stroke:#222; stroke-width:2; rx:10; ry:10; }
+    .label { font-family: Arial, sans-serif; font-size:16px; fill:#111 }
+    .title { font-weight:bold; font-size:18px }
+    .arrow { stroke:#1f78b4; stroke-width:2; marker-end:url(#arrowhead); fill:none }
+    .arrow2 { stroke:#33a02c; stroke-width:2; marker-end:url(#arrowhead); fill:none; stroke-dasharray:6 4 }
+    .note { font-family: Arial, sans-serif; font-size:13px; fill:#444 }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1f78b4" />
+    </marker>
+  </defs>
+
+  <!-- Nodes -->
+  <!-- Requester -->
+  <rect class="box" x="40" y="240" width="200" height="120" />
+  <text class="label title" x="140" y="270" text-anchor="middle">Requester</text>
+  <text class="label" x="140" y="295" text-anchor="middle">(Client App / Device)</text>
+
+  <!-- Bridge Server -->
+  <rect class="box" x="300" y="200" width="220" height="200" />
+  <text class="label title" x="410" y="235" text-anchor="middle">Bridge Server</text>
+  <text class="label" x="410" y="260" text-anchor="middle">HTTP (Flask)</text>
+  <text class="label" x="410" y="282" text-anchor="middle">MQTT v5 Client</text>
+
+  <!-- MQTT Broker -->
+  <rect class="box" x="580" y="200" width="200" height="200" />
+  <text class="label title" x="680" y="235" text-anchor="middle">MQTT Broker</text>
+  <text class="label" x="680" y="260" text-anchor="middle">(e.g., Mosquitto)</text>
+
+  <!-- Target Device -->
+  <rect class="box" x="820" y="240" width="140" height="120" />
+  <text class="label title" x="890" y="270" text-anchor="middle">Target</text>
+  <text class="label" x="890" y="295" text-anchor="middle">Device/Service</text>
+
+  <!-- Arrows: Request path -->
+  <path class="arrow" d="M 240 300 L 300 300" />
+  <text class="label" x="270" y="290" text-anchor="middle">HTTP POST</text>
+  <text class="note"  x="270" y="310" text-anchor="middle">/publish {topic, message}</text>
+
+  <path class="arrow" d="M 520 280 L 580 280" />
+  <text class="label" x="550" y="270" text-anchor="middle">MQTT PUBLISH</text>
+  <text class="note"  x="550" y="290" text-anchor="middle">topic: request / payload</text>
+
+  <path class="arrow" d="M 780 300 L 820 300" />
+  <text class="label" x="800" y="290" text-anchor="middle">Deliver</text>
+  <text class="note"  x="800" y="310" text-anchor="middle">to subscriber</text>
+
+  <!-- Arrows: Response path (dashed) -->
+  <path class="arrow2" d="M 820 340 L 780 340" />
+  <text class="label" x="800" y="360" text-anchor="middle">MQTT PUBLISH</text>
+  <text class="note"  x="800" y="378" text-anchor="middle">topic: response</text>
+
+  <path class="arrow2" d="M 580 360 L 520 360" />
+  <text class="label" x="550" y="380" text-anchor="middle">Deliver</text>
+
+  <path class="arrow2" d="M 300 340 L 240 340" />
+  <text class="label" x="270" y="360" text-anchor="middle">HTTP Response</text>
+  <text class="note"  x="270" y="378" text-anchor="middle">200 / result payload</text>
+
+  <!-- Footer note -->
+  <text class="note" x="500" y="560" text-anchor="middle">
+    The Bridge Server acts as middleware: it accepts HTTP requests, publishes to MQTT, and can relay responses back.
+  </text>
+</svg>
+
